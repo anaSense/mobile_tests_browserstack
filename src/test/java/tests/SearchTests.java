@@ -1,13 +1,11 @@
 package tests;
 
-import com.codeborne.selenide.CollectionCondition;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
-import static io.appium.java_client.AppiumBy.className;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.id;
 
