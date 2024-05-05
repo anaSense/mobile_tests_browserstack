@@ -1,0 +1,55 @@
+
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'com.anaSense'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "6.13.0",
+    restAssuredVersion = "5.4.0",
+    allureVersion = "2.26.0",
+    junitVersion = "5.9.3",
+    slf4jVersion = "2.0.13"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        aspectjVersion.set("1.9.22")
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.appium:java-client:8.4.0",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion"
+    )
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
