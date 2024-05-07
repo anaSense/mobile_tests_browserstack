@@ -1,6 +1,7 @@
 package tests;
 
 import io.appium.java_client.AppiumBy;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class SearchTests_old {
     @Test
+    @Disabled
     void successfulSearchTest() throws MalformedURLException, InterruptedException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
